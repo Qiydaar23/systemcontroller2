@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class UserService{
-    static BASE_URL = "http://localhost:8080"
+    static BASE_URL = import.meta.env.VITE_API_BASE_URL
 
     static async login(email, password){
         try{

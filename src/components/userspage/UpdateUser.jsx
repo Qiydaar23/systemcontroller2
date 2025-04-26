@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import UserService from '../service/UserService';
+import './updateUser.css';
 
 function UpdateUser() {
   const navigate = useNavigate();
   const { userId } = useParams();
-
 
   const [userData, setUserData] = useState({
     name: '',
@@ -15,21 +15,19 @@ function UpdateUser() {
   });
 
   useEffect(() => {
-    fetchUserDataById(userId); // Pass the userId to fetchUserDataById
-  }, [userId]); //wheen ever there is a chane in userId, run this
+    fetchUserDataById(userId);
+  }, [userId]);
 
   const fetchUserDataById = async (userId) => {
     try {
       const token = localStorage.getItem('token');
-      console.log("Token:", token)
-      const response = await UserService.getUserById(userId, token); // Pass userId to getUserById
+      const response = await UserService.getUserById(userId, token);
       const { name, email, role, city } = response.accountUsers;
       setUserData({ name, email, role, city });
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
   };
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,20 +43,22 @@ function UpdateUser() {
       const confirmUpdate = window.confirm('Are you sure you want to update this user?');
       if (confirmUpdate) {
         const token = localStorage.getItem('token');
-        const res = await UserService.updateUser(userId, userData, token);
-        console.log(res)
-
-        navigate("/admin/user-management")
+        await UserService.updateUser(userId, userData, token);
+        navigate("/admin/user-management");
       }
-
     } catch (error) {
       console.error('Error updating user profile:', error);
-      alert(error)
+      alert(error);
     }
   };
 
+  const handleClose = () => {
+    navigate("/admin/user-management");
+  };
+
   return (
-    <div className="auth-container">
+    <div className="auth-container update-user-container">
+      <button className="close-button" onClick={handleClose}>✕</button>
       <h2>Update User</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -77,7 +77,7 @@ function UpdateUser() {
           <label>City:</label>
           <input type="text" name="city" value={userData.city} onChange={handleInputChange} />
         </div>
-        <button type="submit">Update</button>
+        <button type="submit" className="update-button">Update</button>
       </form>
     </div>
   );

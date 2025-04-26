@@ -1,0 +1,69 @@
+/* CatchTheButton.css */
+
+.catch-the-button-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0f8ff;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  h1 {
+    font-size: 30px;
+    color: #333;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+
+  /* Container for the button (with border) */
+  .button-container {
+    position: relative;
+    width: 300px;  /* Fixed width */
+    height: 300px; /* Fixed height */
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border: 2px dashed #ff6347;  /* Dotted border */
+    border-radius: 15px;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  /* Button Style */
+  .catch-button {
+    position: absolute;
+    width: 60px;  /* Smaller width */
+    height: 60px; /* Smaller height */
+    font-size: 14px; /* Smaller font size */
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Round button */
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .catch-button:hover {
+    background-color: #e55347;
+    transform: scale(1.1);
+  }
+
+  /* Reset Button Style */
+  .reset-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .reset-button:hover {
+    background-color: #007bb5;
+  }

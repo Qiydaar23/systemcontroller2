@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import UserService from '../service/UserService';
 import { useUserContext } from '../context/UserContext';
 import { RegistrationForm } from '../auth/RegistrationPage';
+import './UserManagementPage.css';
 
 function UserManagementPage() {
   const [users, setUsers] = useState([]);
@@ -60,7 +61,7 @@ function UserManagementPage() {
 
 
 
-      <h2>Users Management Page</h2>
+      <h2 className='name'>Users Management Page</h2>
       <button onClick={() => setShowAddUserForm(true)} className='reg-button'> Add User</button>
       <table>
         <thead>

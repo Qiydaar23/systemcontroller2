@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Game1.css';
 import cross from '../../assets/xsymbol.png';
 import circle from '../../assets/osymbol.jpg';
@@ -7,6 +8,11 @@ const TicTacToe = () => {
     const [data, setData] = useState(Array(9).fill(""));
     const [count, setCount] = useState(0);
     const [lock, setLock] = useState(false);
+    const navigate = useNavigate();
+
+    const exitGame = () => {
+        navigate('/profile');
+    };
 
     const toggle = (index) => {
         if (lock || data[index] !== "") return;
@@ -76,7 +82,7 @@ const TicTacToe = () => {
                     </div>
                 ))}
             </div>
-
+            <button className="leavegame" onClick={exitGame}>Exit Game</button>
         </div>
     );
 };

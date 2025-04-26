@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './CatchTheButton.css';
 
 const CatchTheButton = () => {
-  const [position, setPosition] = useState({ top: 100, left: 100 });
+  const [position, setPosition] = useState({ top: 50, left: 50 });
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30); // 30 seconds timer
-
+    const navigate = useNavigate();
+    
   useEffect(() => {
     if (timeLeft === 0) return;
     const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -12,8 +15,14 @@ const CatchTheButton = () => {
   }, [timeLeft]);
 
   const moveButton = () => {
-    const newTop = Math.random() * (window.innerHeight - 100);
-    const newLeft = Math.random() * (window.innerWidth - 100);
+    const buttonSize = 60; // Smaller button size
+    const container = document.getElementById("button-container"); // Get container element
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    const newTop = Math.random() * (containerHeight - buttonSize);
+    const newLeft = Math.random() * (containerWidth - buttonSize);
+
     setPosition({ top: newTop, left: newLeft });
     setScore(score + 1);
   };
@@ -21,69 +30,43 @@ const CatchTheButton = () => {
   const resetGame = () => {
     setScore(0);
     setTimeLeft(30);
-    setPosition({ top: 100, left: 100 });
+    setPosition({ top: 50, left: 50 });
+  };
+
+  const exitGame = () => {
+    navigate('/profile');
   };
 
   return (
-    <div style={styles.container}>
+    <div className="catch-the-button-container">
       <h1>Catch The Button!</h1>
       <h2>Time Left: {timeLeft}s</h2>
       <h2>Score: {score}</h2>
 
-      {timeLeft > 0 ? (
-        <button
-          style={{
-            ...styles.button,
-            top: position.top,
-            left: position.left,
-          }}
-          onClick={moveButton}
-        >
-          Catch Me!
-        </button>
-      ) : (
-        <>
-          <h2>Game Over!</h2>
-          <button style={styles.resetButton} onClick={resetGame}>
-            Play Again
+      <div className="button-container" id="button-container">
+        {timeLeft > 0 ? (
+          <button
+            className="catch-button"
+            style={{
+              top: position.top,
+              left: position.left,
+            }}
+            onClick={moveButton}
+          >
+            Click Me!
           </button>
-        </>
-      )}
+        ) : (
+          <>
+            <h2>Game Over!</h2>
+            <button className="reset-button" onClick={resetGame}>
+              Play Again
+            </button>
+          </>
+        )}
+      </div>
+      <button className="leavegame" onClick={exitGame}>Exit Game</button>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    position: 'relative',
-    width: '100%',
-    height: '100vh',
-    overflow: 'hidden',
-    backgroundColor: '#f0f8ff',
-    textAlign: 'center',
-    paddingTop: '20px',
-  },
-  button: {
-    position: 'absolute',
-    padding: '15px 25px',
-    fontSize: '18px',
-    backgroundColor: '#ff6347',
-    color: 'white',
-    border: 'none',
-    borderRadius: '12px',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-  },
-  resetButton: {
-    padding: '10px 20px',
-    fontSize: '18px',
-    backgroundColor: '#008cba',
-    color: 'white',
-    border: 'none',
-    borderRadius: '12px',
-    cursor: 'pointer',
-    marginTop: '20px',
-  },
 };
 
 export default CatchTheButton;

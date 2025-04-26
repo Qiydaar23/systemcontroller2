@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import UserService from '../service/UserService';
 import { useUserContext } from '../context/UserContext';
+import './Navbar.css';
+
+
 function Navbar() {
     const { isAuthenticated, isAdmin, user, logout } = useUserContext();
    // const isAuthenticated = UserService.isAuthenticated();

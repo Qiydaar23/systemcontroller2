@@ -1,0 +1,99 @@
+/* profilepage.css */
+
+/* Main container for profile page */
+.profile-page-container {
+    background: rgba(255, 255, 255, 0.1); /* Slight transparency for a modern look */
+    backdrop-filter: blur(10px); /* Blur effect in the background */
+    margin: 20px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px; /* Rounded corners for the container */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* Soft shadow for depth */
+    color: #eee; /* Text color */
+    text-align: center; /* Center text within the container */
+    transition: transform 0.3s ease; /* Smooth scale transition on hover */
+}
+
+/* Hover effect for scaling the container */
+.profile-page-container:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Heading style */
+h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #00e5ff; /* Bright cyan color */
+    font-weight: 600;
+}
+
+/* Paragraph text styling */
+p {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #ccc; /* Light gray for less important text */
+}
+
+/* Styling for buttons */
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #00e5ff; /* Cyan background for buttons */
+    border: none;
+    border-radius: 12px; /* Rounded corners for the buttons */
+    color: #000; /* Black text for buttons */
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #00b8d4; /* Slightly darker cyan on hover */
+    transform: translateY(-2px); /* Slight upward movement */
+}
+
+/* Removing underline from links inside buttons */
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit button color */
+}
+
+/* Styling for the game containers */
+.game-container {
+    background: rgba(255, 255, 255, 0.1); /* Light background for the games container */
+    backdrop-filter: blur(8px); /* Subtle blur effect for modern look */
+    padding: 20px;
+    width: 90%;
+    max-width: 400px; /* Smaller width for game boxes */
+    border-radius: 50%; /* Circular game container */
+    margin: 20px auto; /* Center the game containers */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    color: #eee;
+    text-align: center;
+    transition: transform 0.3s ease; /* Smooth scaling transition */
+}
+
+/* Hover effect for game containers */
+.game-container:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Button styling specific for the games */
+.game-button {
+    background-color: #00e5ff; /* Cyan background for game buttons */
+    padding: 12px 25px;
+    border-radius: 12px;
+    color: #000;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Button hover effect */
+}
+
+.game-button:hover {
+    background-color: #00b8d4; /* Darker cyan on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}

@@ -1,0 +1,105 @@
+/* updateUser.css */
+
+/* Overall modal container */
+.update-user-container {
+    position: relative;
+    background: rgba(0, 0, 0, 0.6); /* transparent black background */
+    backdrop-filter: blur(15px); /* glassmorphism effect */
+    border-radius: 16px;
+    padding: 40px 30px 30px 30px;
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    color: #eee;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* shadow for a 3D effect */
+    animation: fadeIn 0.5s ease-in-out; /* smooth fade-in */
+}
+
+/* Close button (X) at top-right corner */
+.close-button {
+    position: fixed; /* fixes it in the top-right corner */
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 28px; /* larger size */
+    color: #ff4d4d;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+    z-index: 2000; /* keeps it on top of all elements */
+}
+
+.close-button:hover {
+    color: #ff1a1a; /* redder on hover */
+    transform: scale(1.3); /* slight enlarge on hover */
+}
+
+/* Heading inside the modal */
+.update-user-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #00e5ff; /* blue color */
+}
+
+/* Form container inside the modal */
+.update-user-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* space between inputs */
+}
+
+/* Individual form group (label + input) */
+.update-user-container .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label styling */
+.update-user-container .form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #00e5ff; /* blue label text */
+}
+
+/* Input styling */
+.update-user-container .form-group input {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1); /* transparent white */
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+}
+
+.update-user-container .form-group input:focus {
+    background: rgba(255, 255, 255, 0.2); /* slightly more opaque when focused */
+    border: 1px solid #00e5ff; /* focus border color */
+}
+
+/* Button styling for the update action */
+.update-button {
+    background: linear-gradient(135deg, #00e5ff, #00b8d4); /* blue gradient */
+    border: none;
+    padding: 14px 22px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%; /* make the button full-width */
+}
+
+.update-button:hover {
+    background: linear-gradient(135deg, #00b8d4, #00e5ff); /* reverse gradient on hover */
+    transform: scale(1.05); /* slightly enlarge on hover */
+}
+
+/* Keyframe animation for fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
