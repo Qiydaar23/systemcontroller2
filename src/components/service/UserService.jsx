@@ -3,34 +3,55 @@ import axios from "axios";
 class UserService{
     static BASE_URL = import.meta.env.VITE_API_BASE_URL
 
-    static async login(email, password){
-        try{
-            const response = await axios.post(`${UserService.BASE_URL}/auth/login`, {email, password})
-            console.log("data", response.data)
+    static async login(email, password) {
+        try {
+            const response = await axios.post(
+                `${UserService.BASE_URL}/auth/login`,
+                { email, password },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            console.log("data", response.data);
             return response.data;
-
-        }catch(err){
+        } catch (err) {
             throw err;
         }
     }
 
-    static async register(userData, token){
-        try{
-            const response = await axios.post(`${UserService.BASE_URL}/auth/register`, userData
 
-        )
+    static async register(userData, token) {
+        try {
+            const response = await axios.post(
+                `${UserService.BASE_URL}/auth/register`,
+                userData,  // This is the body data
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                       // 'Authorization': `Bearer ${token}` // Include the token if needed
+                    }
+                }
+            );
             return response.data;
-        }catch(err){
+        } catch (err) {
             throw err;
         }
     }
+
 
     static async getAllUsers(token){
         console.log("token", token)
         try{
             const response = await axios.get(`${UserService.BASE_URL}/admin/get-all-users`,
             {
-                headers: {Authorization: `Bearer ${token}`}
+
+
+                headers: {
+                    Authorization: `Bearer ${token}`
+
+            }
             }
         )
 
