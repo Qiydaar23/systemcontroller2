@@ -12,6 +12,7 @@ class UserService{
                     headers: {
                         'Content-Type': 'application/json',
                     },
+                    withCredentials: true,
                 }
             );
             console.log("data", response.data);
@@ -31,7 +32,8 @@ class UserService{
                     headers: {
                         'Content-Type': 'application/json',
                        // 'Authorization': `Bearer ${token}` // Include the token if needed
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
             return response.data;
